@@ -549,9 +549,9 @@ if(!load('-fit')){store('-fit',1);$('fit').click()}
 <div id="gate" class="gate" hidden></div>
 <script>
 /* ===== Supabase connection – paste your project values here ===== */
-window.HUC_SUPABASE = { url: "https://ptriflzzvrbnzuitclns.supabase.co/rest/v1/", anonKey: "" };
+window.HUC_SUPABASE = { url: "https://ptriflzzvrbnzuitclns.supabase.co", anonKey: "sb_publishable_TnyXWekAJ_ObstDJ-IOToA_69Xa_nx8" };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
 <script>
 (()=>{const C=window.HUC_SUPABASE||{},G=document.getElementById('gate');
  let vi=false;try{vi=(JSON.parse(localStorage.getItem('hucCowRoadmap9-ui')||'{}').lang==='vi')||/lang=vi/.test(location.hash)}catch(e){}
@@ -559,6 +559,8 @@ window.HUC_SUPABASE = { url: "https://ptriflzzvrbnzuitclns.supabase.co/rest/v1/"
  const show=h=>{G.innerHTML='<div class="gcard"><div class="eyebrow">Block B Pack 2 · HUC</div><h2>'+T('HUC Close-out Roadmap','Lộ trình đóng hạng mục HUC')+'</h2>'+h+'</div>';G.hidden=false};
  const msg=(m,ok)=>{const e=document.getElementById('gmsg');if(e){e.textContent=m;e.className='msg '+(ok?'ok':'err')}};
  if(!C.url||!C.anonKey){show('<p>'+T('Not connected yet. Paste the Supabase Project URL and anon key into HUC_SUPABASE near the end of index.html.','Chưa kết nối. Dán Project URL và anon key của Supabase vào HUC_SUPABASE ở gần cuối file index.html.')+'</p>');return}
+ C.url=String(C.url).trim().replace(/\/(rest|auth)\/v1\/?$/,'').replace(/\/+$/,'');C.anonKey=String(C.anonKey).trim();
+ if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(C.url)||/^https?:/i.test(C.anonKey)||!(/^eyJ/.test(C.anonKey)||/^sb_publishable_/.test(C.anonKey))){show('<p>'+T('The connection settings look wrong. url must be like https://xxxx.supabase.co and anonKey must be the "anon public" key (starts with eyJ…) or the publishable key (starts with sb_publishable_…), not a URL and never the service_role / secret key.','Cấu hình kết nối chưa đúng. url phải có dạng https://xxxx.supabase.co, anonKey phải là khóa "anon public" (bắt đầu bằng eyJ…) hoặc khóa publishable (bắt đầu bằng sb_publishable_…), không phải đường link, và không bao giờ dùng khóa service_role / secret.')+'</p>');return}
  if(!window.supabase||!window.supabase.createClient){show('<p>'+T('The sign-in library did not load. Check the internet connection, then reload the page.','Không tải được thư viện đăng nhập. Kiểm tra kết nối mạng rồi tải lại trang.')+'</p>');return}
  const sb=window.supabase.createClient(C.url,C.anonKey);let booted=false,busy=false;
  function loginForm(note){show(`<p>${T('Sign in with your company email.','Đăng nhập bằng email công ty.')}</p>
