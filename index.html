@@ -6,6 +6,7 @@
 </head>
 <body>
 <title>HUC Close-out Roadmap</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{--bg:#f6f7f9;--panel:#fff;--ink:#1d2433;--mute:#6b7385;--line:#e3e7ee;--line2:#eef1f5;--hdr:#1f3a5f;--acc:#2f6fd6;
 --KLWA:#2f6fd6;--AQWA:#d9822b;--CVWA:#2e9e6a;--wk:#f3f5f8;--today:#e5484d;--ok:#15803d;--warn:#c2410c;--bad:#dc2626}
@@ -97,6 +98,7 @@ footer{padding:10px 20px 30px;color:var(--mute);font-size:12px}footer li{margin:
 .cbtn{font-size:11px;padding:1px 7px;line-height:16px;border-radius:9px;border:1px solid var(--ok);color:var(--ok);background:transparent;cursor:pointer;white-space:nowrap}
 .cbtn:hover{background:var(--ok);color:#fff}.cbtn.re{border-color:var(--line);color:var(--mute)}.cbtn.re:hover{background:var(--wk);color:var(--ink)}
 .sc{display:inline-block;font-size:10.5px;font-weight:700;padding:0 6px;border-radius:4px;line-height:16px}.sc-POS{background:#e7f0ff;color:#1c4fb8}.sc-PMC{background:#fff1e0;color:#b4570b}
+#hm{display:none}
 #la{display:none;padding:14px 20px 30px;background:var(--panel)}
 #laWrap{overflow:auto;max-height:calc(100vh - 300px);border:1px solid var(--line);border-radius:8px}
 table.lat{border-collapse:separate;border-spacing:0;font-size:12px}
@@ -118,13 +120,115 @@ table.lat{border-collapse:separate;border-spacing:0;font-size:12px}
 .lang{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}.lang button{border:none;border-radius:0;padding:5px 12px;font-weight:600}.lang button.on{background:var(--acc);color:#fff}
 @media (max-width:900px){.kgrid{grid-template-columns:1fr}}
 @media (max-width:760px){header{padding:12px 16px}.bar{padding:8px 16px}.tabs{padding:0 16px}#kpi{padding:12px 16px}.facts{padding:10px 16px 4px}}
+
+/* ===== S3-roadmap look: solid, layered blocks ===== */
+:root{--bg:#e8edf3;--panel:#ffffff;--ink:#111111;--mute:#7f7f7f;--line:#e4e7eb;--line2:#eef1f5;--hdr:#1F3864;--acc:#2E5597;--wk:#f3f6fa;
+ --KLWA:#2a78d6;--AQWA:#eb6834;--CVWA:#1baf7a;--today:#C00000;--ok:#2e7d32;--warn:#c55a11;--bad:#C00000;
+ --cy:#B2F0F8;--cy-ink:#000000;--or:#F79F57;--or-ink:#262626;--grp:#E2EFDA;--sum:#DDEBF7;--hero1:#1F3864;--hero2:#2E5597;--ring:rgba(0,0,0,.13);
+ --hz:#f2f2f2;--h1:#DDEBF7;--h2:#BDD7EE;--h3:#9BC2E6;--h4:#5B9BD5;--h5:#1F3864;--hi-ink:#ffffff;
+ --sh1:0 1px 2px rgba(16,24,40,.08),0 1px 1px rgba(16,24,40,.04);--sh2:0 2px 4px rgba(16,24,40,.06),0 6px 16px rgba(16,24,40,.09);--sh3:0 4px 10px rgba(16,24,40,.10),0 14px 32px rgba(16,24,40,.14);--hl:rgba(255,255,255,.75);
+ --f-display:"Archivo","Segoe UI",system-ui,sans-serif;--f-body:"IBM Plex Sans Condensed","Arial Narrow","Segoe UI",system-ui,sans-serif;--f-data:"IBM Plex Mono",Consolas,"Courier New",monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e12;--panel:#161b22;--ink:#eef2f6;--mute:#8792a0;--line:#2a313a;--line2:#222831;--hdr:#9BC2E6;--acc:#5B9BD5;--wk:#1b2129;
+ --KLWA:#3987e5;--AQWA:#d95926;--CVWA:#199e70;--today:#ff6b6b;--ok:#5ccf74;--warn:#f3a06a;--bad:#ff8a80;
+ --cy:#0e4a52;--cy-ink:#e6fbfe;--or:#7a4a26;--or-ink:#fde6d4;--grp:#1d2a1b;--sum:#1d3550;--hero1:#13213b;--hero2:#1f3a63;--ring:rgba(255,255,255,.12);
+ --hz:#1c2229;--h1:#1d3550;--h2:#24507a;--h3:#2f6fa8;--h4:#5B9BD5;--h5:#BDD7EE;--hi-ink:#0f1318;
+ --sh1:0 1px 2px rgba(0,0,0,.5);--sh2:0 2px 6px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.35);--sh3:0 6px 16px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.45);--hl:rgba(255,255,255,.06);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0e12;--panel:#161b22;--ink:#eef2f6;--mute:#8792a0;--line:#2a313a;--line2:#222831;--hdr:#9BC2E6;--acc:#5B9BD5;--wk:#1b2129;
+ --KLWA:#3987e5;--AQWA:#d95926;--CVWA:#199e70;--today:#ff6b6b;--ok:#5ccf74;--warn:#f3a06a;--bad:#ff8a80;
+ --cy:#0e4a52;--cy-ink:#e6fbfe;--or:#7a4a26;--or-ink:#fde6d4;--grp:#1d2a1b;--sum:#1d3550;--hero1:#13213b;--hero2:#1f3a63;--ring:rgba(255,255,255,.12);
+ --hz:#1c2229;--h1:#1d3550;--h2:#24507a;--h3:#2f6fa8;--h4:#5B9BD5;--h5:#BDD7EE;--hi-ink:#0f1318;
+ --sh1:0 1px 2px rgba(0,0,0,.5);--sh2:0 2px 6px rgba(0,0,0,.45),0 8px 20px rgba(0,0,0,.35);--sh3:0 6px 16px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.45);--hl:rgba(255,255,255,.06);color-scheme:dark}
+body{font-family:var(--f-body);font-size:13.5px;background:var(--bg)}
+select,input,button{font-family:var(--f-body)}
+/* header band */
+header{margin:16px 20px 0;padding:20px 24px;border-radius:14px;background:linear-gradient(135deg,var(--hero1) 0%,var(--hero2) 100%);color:#fff;box-shadow:var(--sh3);position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-60px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(155,194,230,.22),transparent 65%);pointer-events:none}
+header>*{position:relative;z-index:1}
+header .eyebrow{font-family:var(--f-data);color:#9BC2E6;letter-spacing:.12em}
+header h1{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.01em;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.25);text-wrap:balance}
+header .sub{color:#DDEBF7}
+header .role{color:#DDEBF7;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+header .role.ed{color:#b8f5c4;border-color:rgba(184,245,196,.6)}header .role.co{color:#cfe3ff;border-color:rgba(207,227,255,.6)}
+header button{background:rgba(255,255,255,.10);color:#fff;border-color:rgba(255,255,255,.25)}
+header .lang{border-color:rgba(255,255,255,.3)}header .lang button{background:transparent;color:#DDEBF7}header .lang button.on{background:#fff;color:var(--hero1)}
+/* tabs as solid blocks */
+.tabs{margin:14px 20px 0;padding:5px;gap:6px;background:var(--panel);border-radius:12px;box-shadow:var(--sh2);align-items:center;flex-wrap:wrap}
+.tab{border:none;border-radius:8px;padding:9px 18px;background:transparent;color:#404040;font:600 13.5px var(--f-body);transition:background .12s,color .12s}
+.tab:hover{background:var(--line)}
+.tab.on{background:linear-gradient(180deg,var(--hero2),var(--hero1));color:#fff;box-shadow:0 2px 6px rgba(31,56,100,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+.dispbtn{margin:0 0 0 auto}
+/* summary cards */
+.facts{background:transparent;padding:14px 20px 4px;gap:10px}
+.fact{background:var(--panel);border:1px solid var(--ring);border-radius:10px;box-shadow:var(--sh1)}
+.fact b{font:700 19px var(--f-display)}.fact span{letter-spacing:.06em;text-transform:uppercase;font-size:10.5px}
+/* toolbar card + raised controls */
+.bar{margin:10px 20px;border:0;border-radius:12px;box-shadow:var(--sh2)}
+.bar button,.bar select,.bar input[type=search],#kpi button,#la button,#la select,#kpi input,#la input[type=date]{border:1px solid var(--ring);border-radius:7px;background:linear-gradient(180deg,var(--panel),var(--bg));box-shadow:var(--sh1),inset 0 1px 0 var(--hl)}
+.bar button:hover,#la button:hover,#kpi button:hover{border-color:var(--acc)}
+.chip{border-radius:8px;box-shadow:var(--sh1)}
+/* gantt card */
+#wrap{margin:0 20px 20px;border-radius:12px;box-shadow:var(--sh2);height:calc(100vh - 330px)}
+.hdrs{box-shadow:0 3px 8px rgba(16,24,40,.12)}
+.hdrs .left{background:var(--cy)}.hdrs .left>div{color:var(--cy-ink);font-weight:700}
+.hdrs .tl{background:var(--or)}.hdrs .mon,.hdrs .wkc{color:var(--or-ink);border-left-color:rgba(0,0,0,.18)}.hdrs .mon{font-family:var(--f-display)}
+.grp>.left{background:var(--grp)}
+.grp1>.left{background:var(--sum);box-shadow:inset 4px 0 0 var(--hero1)}
+.b.it{background-image:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 50%,rgba(0,0,0,.14))!important;box-shadow:0 1px 2px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.35);border-radius:4px}
+.b.it.done{background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.45) 0 3px,transparent 3px 7px),linear-gradient(180deg,rgba(255,255,255,.35),rgba(0,0,0,.14))!important}
+.left>div.num,.c-num{font-family:var(--f-data)}
+/* KPI + look-ahead blocks */
+#kpi,#la,#hm{background:transparent;margin:0 20px 20px;padding:14px 0 0}
+.kc{background:var(--panel);border:1px solid var(--ring);box-shadow:var(--sh1);border-radius:10px}.kc b{font:700 20px var(--f-display)}
+.kt th{background:var(--cy);color:var(--cy-ink);font-weight:700;border-bottom:1px solid #bfbfbf}
+.kt{background:var(--panel);border-radius:10px;overflow:hidden;box-shadow:var(--sh1)}
+.kt tr.tot td{background:var(--sum)}
+h3{font-family:var(--f-display)}
+#laWrap{border:0;border-radius:12px;box-shadow:var(--sh2);background:var(--panel)}
+.lat thead th{background:var(--cy);color:var(--cy-ink)}.lat thead th.d{background:var(--or);color:var(--or-ink)}
+.lat thead tr.mp th{background:var(--sum);color:var(--ink)}
+.lat tr.lg1 td{background:var(--grp)}.lat tr.lg1 td:first-child{box-shadow:inset 4px 0 0 var(--hero1)}
+.lat td.d.on{background-image:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))}
+/* heat map */
+.hmCtl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;background:var(--panel);padding:10px 14px;border-radius:12px;box-shadow:var(--sh2);margin-bottom:12px}
+.hmCtl .lbl{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:8px}
+.seg{display:inline-flex;border:1px solid var(--ring);border-radius:8px;overflow:hidden;background:linear-gradient(180deg,var(--panel),var(--bg));box-shadow:var(--sh1),inset 0 1px 0 var(--hl)}
+.seg button{all:unset;padding:6px 12px;font:500 12.5px var(--f-body);cursor:pointer;color:#404040;border-left:1px solid var(--ring);letter-spacing:0;text-transform:none}
+.seg button:first-child{border-left:0}.seg button:hover{background:var(--line)}
+.seg button[aria-pressed="true"]{background:linear-gradient(180deg,var(--hero2),var(--hero1));color:#fff;box-shadow:inset 0 2px 4px rgba(0,0,0,.25)}
+.seg button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.hmScroll{overflow:auto;max-height:calc(100vh - 330px);background:var(--panel);border-radius:12px;box-shadow:var(--sh2);padding:0 8px 10px 0}
+table.hm{border-collapse:separate;border-spacing:3px;font-family:var(--f-data);font-size:11px;font-variant-numeric:tabular-nums}
+.hm thead th{position:sticky;z-index:3;background:var(--or);color:var(--or-ink);font-weight:600;text-align:center;padding:0}
+.hm thead tr:first-child th{top:0;height:26px;font:600 12px var(--f-display);text-align:left;padding-left:5px}
+.hm thead tr:nth-child(2) th{top:29px;height:22px;font-size:10px}
+.hm th.rh{position:sticky;left:0;z-index:2;background:var(--panel);text-align:left;font:500 12.5px var(--f-body);color:var(--ink);padding:0 12px 0 14px;white-space:nowrap;width:280px;min-width:280px;max-width:280px;overflow:hidden;text-overflow:ellipsis}
+.hm thead th.rh{z-index:4;background:var(--cy);color:var(--cy-ink);font:700 10.5px var(--f-body);letter-spacing:.1em;text-transform:uppercase}
+.hm th.rh .sw{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:8px;vertical-align:-1px}
+.hm tr.l0 th.rh{font-weight:700;background:var(--sum);box-shadow:inset 4px 0 0 var(--hero1);cursor:pointer}
+.hm tr.l1 th.rh{padding-left:30px;color:#404040;font-size:12px}
+.hm tr.tot th.rh{font-weight:700;background:var(--grp)}
+.hm td{width:34px;min-width:34px;max-width:34px;height:26px;text-align:center;background:var(--hz);color:var(--ink);cursor:pointer;padding:0;font-weight:600}
+.hm td.h1{background:var(--h1)}.hm td.h2{background:var(--h2)}.hm td.h3{background:var(--h3)}.hm td.h4{background:var(--h4);color:var(--hi-ink)}.hm td.h5{background:var(--h5);color:var(--hi-ink)}
+.hm td[class*="h"]{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.08)}
+.hm td.z{color:transparent;cursor:default}
+.hm thead th.cur{background:var(--today);color:#fff}
+.hm td.sel{outline:2px solid var(--ink);outline-offset:-2px}
+.hm td.sum{background:transparent;color:var(--ink);font-weight:700;cursor:default;width:46px;min-width:46px;max-width:46px}
+.hmLeg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12px;color:#404040}
+.hmLeg .ramp{display:flex;gap:2px}.hmLeg .ramp i{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:20px;font:500 10.5px var(--f-data);font-style:normal}
+.hmDet{margin-top:12px;background:var(--panel);border-radius:12px;box-shadow:var(--sh2);padding:12px 16px;font-size:12.5px}
+.hmDet h3{margin:0 0 8px;font-size:15px}.hmDet h3 span{font:400 12px var(--f-body);color:var(--mute);margin-left:8px}
+.hmDet .ovw{max-height:360px}
+@media (max-width:760px){header,.tabs,.bar,#wrap,#kpi,#la,#hm{margin-left:16px;margin-right:16px}.hm th.rh{width:180px;min-width:180px;max-width:180px}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tab,:root:not([data-theme="light"]) .seg button,:root:not([data-theme="light"]) .hm tr.l1 th.rh,:root:not([data-theme="light"]) .hmLeg{color:#c3cbd4}}
+:root[data-theme="dark"] .tab,:root[data-theme="dark"] .seg button,:root[data-theme="dark"] .hm tr.l1 th.rh,:root[data-theme="dark"] .hmLeg{color:#c3cbd4}
 </style>
 <header>
  <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap"><div><div class="eyebrow" data-i="Block B Pack 2 · HUC Offshore · COW + Punchlist close-out"></div>
  <h1 data-i="HUC Close-out Roadmap – OPEN COW + Punchlist items"></h1></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span id="role" class="role"></span><button id="btnUsers" hidden data-i="Users"></button><button id="btnOut" hidden data-i="Sign out"></button><div class="lang" role="group" aria-label="Language"><button data-lang="vi">VI</button><button data-lang="en">EN</button></div></div></div>
  <div class="sub" id="sub" data-v="sub"></div>
 </header>
-<div class="tabs"><div class="tab on" data-t="road" data-i="Roadmap"></div><div class="tab" data-t="la" data-i="1-Month Look-ahead"></div><div class="tab" data-t="kpi" data-i="KPI"></div><button id="dispBtn" class="dispbtn">⚙ <span data-i="Display"></span></button></div>
+<div class="tabs"><div class="tab on" data-t="road" data-i="Roadmap"></div><div class="tab" data-t="la" data-i="1-Month Look-ahead"></div><div class="tab" data-t="hm" data-i="Heat Map"></div><div class="tab" data-t="kpi" data-i="KPI"></div><button id="dispBtn" class="dispbtn">⚙ <span data-i="Display"></span></button></div>
 <div id="roadView">
 <div class="facts" id="facts" data-v="facts"></div>
 <div class="bar">
@@ -144,22 +248,23 @@ table.lat{border-collapse:separate;border-spacing:0;font-size:12px}
  <input type="file" id="impF" accept=".csv" hidden>
 </div>
 <div id="wrap"><div id="grid"></div></div>
-<footer data-v="notes"><ul id="notes"></ul></footer>
+<footer hidden><ul id="notes"></ul></footer>
 </div>
 <div id="la"></div>
+<div id="hm"></div>
 <div id="kpi"></div>
 <div id="drawer"><div class="dh" id="dh"></div><div class="db" id="dbody"></div><div class="btns" id="dbtn"></div></div>
 <div id="disp"></div>
 <div id="usersDlg"></div>
 <div id="tip"></div>
-<script id="i18n-vi" type="application/json">{"(assumed)": "(giả định)", "(kept when duration changes)": "(giữ nguyên khi đổi thời lượng)", "Actual (Done by actual finish)": "Thực tế (hoàn thành theo ngày thực tế)", "Actual finish": "Ngày hoàn thành thực tế", "All": "Tất cả", "Apply": "Áp dụng", "Assumed (no MH in source)": "Giả định (nguồn không có giờ công)", "Block B Pack 2 · HUC Offshore · COW + Punchlist close-out": "Block B Pack 2 · HUC ngoài khơi · Đóng hạng mục COW + tồn đọng", "Chart by": "Biểu đồ theo", "Close": "Đóng", "Collapse": "Thu gọn", "Colour": "Màu theo", "Daily manloading (people/day)": "Nhân lực theo ngày (người/ngày)", "Dates edited": "Đã chỉnh ngày", "Discipline": "Bộ môn", "Done": "Hoàn thành", "Drag to move · drag ends to resize · click to edit": "Kéo để dời ngày · kéo hai đầu để đổi thời lượng · bấm để cập nhật", "Drag to resize · double-click to reset": "Kéo để đổi độ rộng · bấm đúp để đặt lại", "Edited": "Đã chỉnh sửa", "Edited dates": "Ngày đã chỉnh", "Expand all": "Mở rộng tất cả", "Export CSV": "Xuất CSV", "Finish": "Kết thúc", "Fit": "Vừa màn hình", "HUC Close-out Roadmap – OPEN COW + Punchlist items": "Lộ trình đóng hạng mục HUC – COW và tồn đọng còn mở", "Import CSV": "Nhập CSV", "In progress": "Đang thực hiện", "Item span": "Khoảng thời gian", "Items shown": "Hạng mục hiển thị", "KPI": "Chỉ số KPI", "Mandays": "Ngày công", "Manhours": "Giờ công", "Material": "Vật tư", "None": "Không có", "Not started": "Chưa bắt đầu", "Note": "Ghi chú", "OVERDUE": "QUÁ HẠN", "Overdue": "Quá hạn", "Overdue items (finish before status date, not Done)": "Hạng mục quá hạn (kết thúc trước ngày báo cáo, chưa hoàn thành)", "Peak": "Đỉnh", "Peak people/day": "Đỉnh người/ngày", "Planned (current dates)": "Kế hoạch (theo ngày hiện tại)", "Platform": "Giàn", "Post-Drilling": "Post-Drilling", "Punchlist": "Tồn đọng", "Reset dates": "Đặt lại ngày", "Reset edits": "Đặt lại chỉnh sửa", "Roadmap": "Lộ trình", "S-curve – cumulative manhours (weekly)": "Đường cong S – giờ công lũy kế (theo tuần)", "Schedule Detail row": "Schedule Detail, dòng", "Search item / tag / description": "Tìm hạng mục / tag / mô tả", "Show excluded (after Apr-2027)": "Hiện hạng mục bị loại (sau 4/2027)", "Start": "Bắt đầu", "Status": "Trạng thái", "Status date": "Ngày báo cáo", "Today": "Hôm nay", "Total": "Tổng", "Type": "Loại", "Undo": "Hoàn tác", "Undo last date change": "Hoàn tác thay đổi ngày gần nhất", "Update progress by clicking a bar (Roadmap tab) or an item below → Status / Actual finish. Saved in this browser; use Export/Import CSV to share.": "Cập nhật tiến độ: bấm vào thanh (tab Lộ trình) hoặc hạng mục bên dưới → Trạng thái / Ngày hoàn thành thực tế. Dữ liệu lưu trong trình duyệt này; dùng Xuất/Nhập CSV để chia sẻ.", "Week starting (Mon) · drag column borders to resize": "Tuần bắt đầu (thứ Hai) · kéo mép cột để đổi độ rộng", "Zoom": "Thu phóng", "Items": "Số hạng mục", "MH": "Giờ công", "Planned items to date": "Hạng mục KH đến nay", "Planned MH to date": "Giờ công KH đến nay", "Earned MH": "Giờ công đạt", "% Planned": "% kế hoạch", "% Actual": "% thực tế", "SPI": "SPI", "Mat. pending": "Chờ vật tư", "actual": "thực tế", "d": "ngày", "done": "hoàn thành", "hover bars for values": "rê chuột lên cột để xem số", "items": "hạng mục", "overdue": "quá hạn", "people/day": "người/ngày", "planned": "kế hoạch", "total": "tổng", "ID": "Mã", "Item": "Hạng mục", "Description": "Mô tả", "MD": "NC", "Days": "Số ngày", "By platform": "Theo giàn", "By type": "Theo loại", "By discipline": "Theo bộ môn", "Open items (COW + PL + PD)": "Hạng mục còn mở (COW + tồn đọng + sau khoan)", "Done items": "Đã hoàn thành", "Planned % (MH) to date": "% kế hoạch (giờ công) đến nay", "Actual % (MH earned)": "% thực tế (giờ công đạt)", "SPI (earned ÷ planned)": "SPI (đạt ÷ kế hoạch)", "Overdue items": "Hạng mục quá hạn", "Material pending": "Chờ vật tư", "Window": "Đợt", "Tag": "Tag", "Job card": "Phiếu công việc", "Remarks": "Ghi chú", "Dates": "Ngày", "PA2 (source)": "PA2 (nguồn)", "Scope": "Phạm vi", "Source": "Nguồn", "mat:Pending": "Chờ vật tư", "mat:Handed-Over": "Đã bàn giao", "mat:NONE": "Không", "mat:No need": "Không cần", "mat:Partial": "Bàn giao một phần", "col:MH": "GC", "col:MD": "NC", "col:Days": "Ngày", "col:Status": "Trạng thái", "Planned to finish by date": "KH hoàn thành đến ngày", "S-curve – cumulative items completed (weekly)": "Đường cong S – số hạng mục hoàn thành lũy kế (theo tuần)", "Open items (COW + Punchlist + Post-Drilling)": "Hạng mục còn mở (COW + tồn đọng + Post-Drilling)", "Planned % (items) to date": "% kế hoạch (số hạng mục) đến nay", "Actual % (items done)": "% thực tế (số hạng mục hoàn thành)", "SPI (done ÷ planned items)": "SPI (hoàn thành ÷ kế hoạch)", "Display": "Hiển thị", "Display settings": "Tùy chỉnh hiển thị", "Show all": "Hiện tất cả", "Default": "Mặc định", "Compact rows": "Dòng thu gọn", "Columns": "Cột", "Toolbar": "Thanh công cụ", "Description under the title": "Mô tả dưới tiêu đề", "Summary cards": "Ô số liệu tổng", "Daily manloading chart": "Biểu đồ nhân lực theo ngày", "Week row": "Hàng tuần", "Bar labels": "Nhãn trên thanh", "Status-date line": "Đường ngày báo cáo", "Original dates of edited bars": "Ngày gốc của thanh đã chỉnh", "Notes at the bottom": "Ghi chú cuối trang", "Platform buttons": "Nút chọn giàn", "Discipline filter": "Lọc bộ môn", "Material filter": "Lọc vật tư", "Type filter": "Lọc loại", "Status filter": "Lọc trạng thái", "Search box": "Ô tìm kiếm", "Zoom + Fit": "Thu phóng + Vừa màn hình", "Expand / Collapse": "Mở rộng / Thu gọn", "Export / Import CSV": "Xuất / Nhập CSV", "KPI cards": "Ô KPI", "S-curve": "Đường cong S", "Next 2 weeks": "2 tuần tới", "1-Month Look-ahead": "Kế hoạch 1 tháng tới", "From": "Từ ngày", "Span": "Khoảng", "days": "ngày", "Show done": "Hiện hạng mục đã hoàn thành", "Print": "In", "Items in window": "Hạng mục trong kỳ", "Starting in window": "Bắt đầu trong kỳ", "Finishing in window": "Kết thúc trong kỳ", "People/day": "Người/ngày", "No items in this window": "Không có hạng mục trong kỳ này", "Close item": "Đóng", "Reopen": "Mở lại", "Reopen item": "Mở lại hạng mục", "Mark as Done (actual finish = today)": "Đánh dấu hoàn thành (ngày thực tế = hôm nay)", "Action": "Thao tác", "By scope": "Theo phạm vi", "Scope filter": "Lọc phạm vi", "Close button": "Nút Đóng", "Item ID": "Mã hạng mục", "Tag No": "Tag", "Material Status": "Vật tư", "Actual Finish": "Ngày hoàn thành thực tế", "col:Scope": "Phạm vi", "col:Action": "Thao tác", "Carry-over (Oct 1MLA)": "Tồn từ 1MLA tháng 10", "Carry-over from Oct": "Tồn từ tháng 10", "Carry-over from Oct 1MLA": "Tồn từ 1MLA tháng 10", "Oct": "T10", "Carry-over from Oct 1MLA – still open": "Tồn từ 1MLA tháng 10 – chưa đóng", "closed since": "đã đóng từ đó", "Reason": "Lý do", "Reason not closed": "Lý do chưa đóng", "New start": "Bắt đầu mới", "Offline copy – changes stay in this browser": "Bản ngoại tuyến – thay đổi chỉ lưu trong trình duyệt này", "Editor – dates and status": "Biên tập – sửa ngày và trạng thái", "Contributor – can update status": "Cộng tác – được cập nhật trạng thái", "View only": "Chỉ xem", "Not saved": "Chưa lưu được", "you have view-only access": "bạn chỉ có quyền xem", "Shared status could not be loaded": "Không tải được trạng thái dùng chung", "Shared dates could not be loaded": "Không tải được ngày dùng chung", "Someone": "Ai đó", "Status last updated by": "Trạng thái cập nhật lần cuối bởi", "Users": "Người dùng", "Sign out": "Đăng xuất", "Users and roles": "Người dùng và quyền", "New sign-ups wait as Pending until you give them a role.": "Tài khoản mới đăng ký ở trạng thái Chờ duyệt cho tới khi anh/chị cấp quyền.", "Name": "Tên", "Role": "Quyền", "Role updated": "Đã cập nhật quyền", "role:pending": "Chờ duyệt", "role:viewer": "Chỉ xem", "role:contributor": "Cộng tác", "role:editor": "Biên tập", "waiting": "chờ duyệt"}</script>
+<script id="i18n-vi" type="application/json">{"(assumed)": "(giả định)", "(kept when duration changes)": "(giữ nguyên khi đổi thời lượng)", "Actual (Done by actual finish)": "Thực tế (hoàn thành theo ngày thực tế)", "Actual finish": "Ngày hoàn thành thực tế", "All": "Tất cả", "Apply": "Áp dụng", "Assumed (no MH in source)": "Giả định (nguồn không có giờ công)", "Block B Pack 2 · HUC Offshore · COW + Punchlist close-out": "Block B Pack 2 · HUC ngoài khơi · Đóng hạng mục COW + tồn đọng", "Chart by": "Biểu đồ theo", "Close": "Đóng", "Collapse": "Thu gọn", "Colour": "Màu theo", "Daily manloading (people/day)": "Nhân lực theo ngày (người/ngày)", "Dates edited": "Đã chỉnh ngày", "Discipline": "Bộ môn", "Done": "Hoàn thành", "Drag to move · drag ends to resize · click to edit": "Kéo để dời ngày · kéo hai đầu để đổi thời lượng · bấm để cập nhật", "Drag to resize · double-click to reset": "Kéo để đổi độ rộng · bấm đúp để đặt lại", "Edited": "Đã chỉnh sửa", "Edited dates": "Ngày đã chỉnh", "Expand all": "Mở rộng tất cả", "Export CSV": "Xuất CSV", "Finish": "Kết thúc", "Fit": "Vừa màn hình", "HUC Close-out Roadmap – OPEN COW + Punchlist items": "Lộ trình đóng hạng mục HUC – COW và tồn đọng còn mở", "Import CSV": "Nhập CSV", "In progress": "Đang thực hiện", "Item span": "Khoảng thời gian", "Items shown": "Hạng mục hiển thị", "KPI": "Chỉ số KPI", "Mandays": "Ngày công", "Manhours": "Giờ công", "Material": "Vật tư", "None": "Không có", "Not started": "Chưa bắt đầu", "Note": "Ghi chú", "OVERDUE": "QUÁ HẠN", "Overdue": "Quá hạn", "Overdue items (finish before status date, not Done)": "Hạng mục quá hạn (kết thúc trước ngày báo cáo, chưa hoàn thành)", "Peak": "Đỉnh", "Peak people/day": "Đỉnh người/ngày", "Planned (current dates)": "Kế hoạch (theo ngày hiện tại)", "Platform": "Giàn", "Post-Drilling": "Post-Drilling", "Punchlist": "Tồn đọng", "Reset dates": "Đặt lại ngày", "Reset edits": "Đặt lại chỉnh sửa", "Roadmap": "Lộ trình", "S-curve – cumulative manhours (weekly)": "Đường cong S – giờ công lũy kế (theo tuần)", "Schedule Detail row": "Schedule Detail, dòng", "Search item / tag / description": "Tìm hạng mục / tag / mô tả", "Show excluded (after Apr-2027)": "Hiện hạng mục bị loại (sau 4/2027)", "Start": "Bắt đầu", "Status": "Trạng thái", "Status date": "Ngày báo cáo", "Today": "Hôm nay", "Total": "Tổng", "Type": "Loại", "Undo": "Hoàn tác", "Undo last date change": "Hoàn tác thay đổi ngày gần nhất", "Update progress by clicking a bar (Roadmap tab) or an item below → Status / Actual finish. Saved in this browser; use Export/Import CSV to share.": "Cập nhật tiến độ: bấm vào thanh (tab Lộ trình) hoặc hạng mục bên dưới → Trạng thái / Ngày hoàn thành thực tế. Dữ liệu lưu trong trình duyệt này; dùng Xuất/Nhập CSV để chia sẻ.", "Week starting (Mon) · drag column borders to resize": "Tuần bắt đầu (thứ Hai) · kéo mép cột để đổi độ rộng", "Zoom": "Thu phóng", "Items": "Số hạng mục", "MH": "Giờ công", "Planned items to date": "Hạng mục KH đến nay", "Planned MH to date": "Giờ công KH đến nay", "Earned MH": "Giờ công đạt", "% Planned": "% kế hoạch", "% Actual": "% thực tế", "SPI": "SPI", "Mat. pending": "Chờ vật tư", "actual": "thực tế", "d": "ngày", "done": "hoàn thành", "hover bars for values": "rê chuột lên cột để xem số", "items": "hạng mục", "overdue": "quá hạn", "people/day": "người/ngày", "planned": "kế hoạch", "total": "tổng", "ID": "Mã", "Item": "Hạng mục", "Description": "Mô tả", "MD": "NC", "Days": "Số ngày", "By platform": "Theo giàn", "By type": "Theo loại", "By discipline": "Theo bộ môn", "Open items (COW + PL + PD)": "Hạng mục còn mở (COW + tồn đọng + sau khoan)", "Done items": "Đã hoàn thành", "Planned % (MH) to date": "% kế hoạch (giờ công) đến nay", "Actual % (MH earned)": "% thực tế (giờ công đạt)", "SPI (earned ÷ planned)": "SPI (đạt ÷ kế hoạch)", "Overdue items": "Hạng mục quá hạn", "Material pending": "Chờ vật tư", "Window": "Đợt", "Tag": "Tag", "Job card": "Phiếu công việc", "Remarks": "Ghi chú", "Dates": "Ngày", "PA2 (source)": "PA2 (nguồn)", "Scope": "Phạm vi", "Source": "Nguồn", "mat:Pending": "Chờ vật tư", "mat:Handed-Over": "Đã bàn giao", "mat:NONE": "Không", "mat:No need": "Không cần", "mat:Partial": "Bàn giao một phần", "col:MH": "GC", "col:MD": "NC", "col:Days": "Ngày", "col:Status": "Trạng thái", "Planned to finish by date": "KH hoàn thành đến ngày", "S-curve – cumulative items completed (weekly)": "Đường cong S – số hạng mục hoàn thành lũy kế (theo tuần)", "Open items (COW + Punchlist + Post-Drilling)": "Hạng mục còn mở (COW + tồn đọng + Post-Drilling)", "Planned % (items) to date": "% kế hoạch (số hạng mục) đến nay", "Actual % (items done)": "% thực tế (số hạng mục hoàn thành)", "SPI (done ÷ planned items)": "SPI (hoàn thành ÷ kế hoạch)", "Display": "Hiển thị", "Display settings": "Tùy chỉnh hiển thị", "Show all": "Hiện tất cả", "Default": "Mặc định", "Compact rows": "Dòng thu gọn", "Columns": "Cột", "Toolbar": "Thanh công cụ", "Description under the title": "Mô tả dưới tiêu đề", "Summary cards": "Ô số liệu tổng", "Daily manloading chart": "Biểu đồ nhân lực theo ngày", "Week row": "Hàng tuần", "Bar labels": "Nhãn trên thanh", "Status-date line": "Đường ngày báo cáo", "Original dates of edited bars": "Ngày gốc của thanh đã chỉnh", "Notes at the bottom": "Ghi chú cuối trang", "Platform buttons": "Nút chọn giàn", "Discipline filter": "Lọc bộ môn", "Material filter": "Lọc vật tư", "Type filter": "Lọc loại", "Status filter": "Lọc trạng thái", "Search box": "Ô tìm kiếm", "Zoom + Fit": "Thu phóng + Vừa màn hình", "Expand / Collapse": "Mở rộng / Thu gọn", "Export / Import CSV": "Xuất / Nhập CSV", "KPI cards": "Ô KPI", "S-curve": "Đường cong S", "Next 2 weeks": "2 tuần tới", "1-Month Look-ahead": "Kế hoạch 1 tháng tới", "From": "Từ ngày", "Span": "Khoảng", "days": "ngày", "Show done": "Hiện hạng mục đã hoàn thành", "Print": "In", "Items in window": "Hạng mục trong kỳ", "Starting in window": "Bắt đầu trong kỳ", "Finishing in window": "Kết thúc trong kỳ", "People/day": "Người/ngày", "No items in this window": "Không có hạng mục trong kỳ này", "Close item": "Đóng", "Reopen": "Mở lại", "Reopen item": "Mở lại hạng mục", "Mark as Done (actual finish = today)": "Đánh dấu hoàn thành (ngày thực tế = hôm nay)", "Action": "Thao tác", "By scope": "Theo phạm vi", "Scope filter": "Lọc phạm vi", "Close button": "Nút Đóng", "Item ID": "Mã hạng mục", "Tag No": "Tag", "Material Status": "Vật tư", "Actual Finish": "Ngày hoàn thành thực tế", "col:Scope": "Phạm vi", "col:Action": "Thao tác", "Carry-over (Oct 1MLA)": "Tồn từ 1MLA tháng 10", "Carry-over from Oct": "Tồn từ tháng 10", "Carry-over from Oct 1MLA": "Tồn từ 1MLA tháng 10", "Oct": "T10", "Carry-over from Oct 1MLA – still open": "Tồn từ 1MLA tháng 10 – chưa đóng", "closed since": "đã đóng từ đó", "Reason": "Lý do", "Reason not closed": "Lý do chưa đóng", "New start": "Bắt đầu mới", "Offline copy – changes stay in this browser": "Bản ngoại tuyến – thay đổi chỉ lưu trong trình duyệt này", "Editor – dates and status": "Biên tập – sửa ngày và trạng thái", "Contributor – can update status": "Cộng tác – được cập nhật trạng thái", "View only": "Chỉ xem", "Not saved": "Chưa lưu được", "you have view-only access": "bạn chỉ có quyền xem", "Shared status could not be loaded": "Không tải được trạng thái dùng chung", "Shared dates could not be loaded": "Không tải được ngày dùng chung", "Someone": "Ai đó", "Status last updated by": "Trạng thái cập nhật lần cuối bởi", "Users": "Người dùng", "Sign out": "Đăng xuất", "Users and roles": "Người dùng và quyền", "New sign-ups wait as Pending until you give them a role.": "Tài khoản mới đăng ký ở trạng thái Chờ duyệt cho tới khi anh/chị cấp quyền.", "Name": "Tên", "Role": "Quyền", "Role updated": "Đã cập nhật quyền", "role:pending": "Chờ duyệt", "role:viewer": "Chỉ xem", "role:contributor": "Cộng tác", "role:editor": "Biên tập", "waiting": "chờ duyệt", "Heat Map": "Bản đồ nhiệt", "Show": "Hiển thị", "Period": "Chu kỳ", "All platforms": "Tất cả giàn", "Click to expand / collapse": "Bấm để mở rộng / thu gọn"}</script>
 <script id="roadmap-data" type="application/json">{}</script>
 <script type="text/plain" id="app">
 const J=JSON.parse(document.getElementById('roadmap-data').textContent);
 const DAY=864e5,P=s=>Date.parse(s+'T00:00:00Z'),ISO=t=>new Date(t).toISOString().slice(0,10);
 const ALL=J.items,items=ALL.filter(i=>!i.excl),EX=ALL.filter(i=>i.excl),byId=Object.fromEntries(ALL.map(i=>[i.id,i]));
 const PL=['KLWA','AQWA','CVWA'],DISCS=[...new Set(items.map(i=>i.disc))].sort();
-const DC=['#4263eb','#e8590c','#0ca678','#ae3ec9','#f59f00','#1098ad','#d6336c','#5c940d','#7048e8','#c92a2a','#0b7285','#e67700','#862e9c','#2b8a3e','#a61e4d','#364fc7','#d9480f'];
+const DC=['#2a78d6','#eb6834','#1baf7a','#eda100','#e87ba4','#008300','#6250d6','#e34948','#0b7285','#a61e4d','#5c940d','#862e9c','#364fc7','#d9480f','#2b8a3e','#c92a2a','#1098ad'];
 const STC={'Not started':'#8a94a6','In progress':'#2f6fd6','Done':'#15803d'};
 const css=getComputedStyle(document.documentElement);
 const color=(k,v)=>k==='plat'?css.getPropertyValue('--'+v).trim():k==='status'?STC[v]:DC[DISCS.indexOf(v)%DC.length];
@@ -185,7 +290,7 @@ function applyStatic(){document.documentElement.lang=ui.lang;document.title=L2('
 const TODAY=(()=>{const n=new Date();return Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())})();
 const KEY='hucCowRoadmap9';
 const COLS=[['id','ID',172],['it','Item',84],['de','Description',230],['sc','Scope',52],['mt','Material',96],['st','Status',108],['ac','Action',118],['s','Start',64],['f','Finish',64],['du','Days',46,1]];
-let ui={sc:'',laFrom:'',laN:30,laPl:'',laTy:'',laSc:'',laDone:false,hide:{sub:true},compact:false,lang:'en',tab:'road',basis:'pa2',showEx:false,ty:'',D:8,colorBy:'plat',chartBy:'plat',plats:PL.slice(),disc:'',mat:'',st:'',q:'',open:{},cw:{},sd:''};
+let ui={hmM:'act',hmP:'w',hmOpen:true,hmSc:'',hmTy:'',hmCol:{},sc:'',laFrom:'',laN:30,laPl:'',laTy:'',laSc:'',laDone:false,hide:{sub:true},compact:false,lang:'en',tab:'road',basis:'pa2',showEx:false,ty:'',D:8,colorBy:'plat',chartBy:'plat',plats:PL.slice(),disc:'',mat:'',st:'',q:'',open:{},cw:{},sd:''};
 let ed={pa2:{},rs:{}},st={},hist=[];
 const SH={db:null,user:null,mode:'local',canS:true,canD:true,uid:null};
 const load=k=>{try{return JSON.parse(localStorage.getItem(KEY+k)||'null')}catch(e){return null}};
@@ -269,10 +374,11 @@ const cell=(k,html,cls='',title='')=>cw(k)?`<div class="${cls}${COLS.find(c=>c[0
 function render(){
  saveAll();
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.t===ui.tab));
- $('roadView').style.display=ui.tab==='road'?'':'none';$('kpi').style.display=ui.tab==='kpi'?'block':'none';$('la').style.display=ui.tab==='la'?'block':'none';
+ $('roadView').style.display=ui.tab==='road'?'':'none';$('kpi').style.display=ui.tab==='kpi'?'block':'none';$('la').style.display=ui.tab==='la'?'block':'none';$('hm').style.display=ui.tab==='hm'?'block':'none';
  [D0,D1]=range();ND=Math.round((D1-D0)/DAY)+1;
  if(ui.tab==='kpi'){renderKPI();return}
  if(ui.tab==='la'){renderLA();return}
+ if(ui.tab==='hm'){renderHM();return}
  [...pc.children].forEach(c=>{const on=ui.plats.includes(c.dataset.p);c.classList.toggle('on',on);c.style.background=on?color('plat',c.dataset.p):''});
  const list=filtered(),W=ND*ui.D,LW=LWpx();
  const dlist=daily(list,ui.chartBy),pkv=Math.max(0,...dlist.map(r=>r.t));
@@ -424,6 +530,59 @@ function notesText(){$('notes').innerHTML=(ui.lang==='vi'?[
 ]).map(t=>`<li>${esc(t)}</li>`).join('')}
 
 
+
+// ---------- heat map ----------
+let hmSel=null;
+function renderHM(){
+ const M=ui.hmM,per=ui.hmP;
+ const list=items.filter(i=>(!ui.hmOpen||stat(i)!=='Done')&&(!ui.hmSc||i.scope===ui.hmSc)&&(!ui.hmTy||i.type===ui.hmTy));
+ // buckets
+ let a=Infinity,b=-Infinity;items.forEach(i=>{const c=cur(i);a=Math.min(a,c.s);b=Math.max(b,c.f)});
+ const B=[];
+ if(per==='w'){let s=a-((new Date(a).getUTCDay()+6)%7)*DAY;for(;s<=b;s+=7*DAY)B.push({s,e:s+6*DAY})}
+ else{let d=new Date(a);d=Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),1);while(d<=b){const n=new Date(d);const e=Date.UTC(n.getUTCFullYear(),n.getUTCMonth()+1,1)-DAY;B.push({s:d,e});d=e+DAY}}
+ const val=(i,k)=>{const c=cur(i),bk=B[k];if(M==='fin')return c.f>=bk.s&&c.f<=bk.e?1:0;const o0=Math.max(c.s,bk.s),o1=Math.min(c.f,bk.e);if(o1<o0)return 0;if(M==='act')return 1;return i.md/c.d*((o1-o0)/DAY+1)/((bk.e-bk.s)/DAY+1)};
+ const rowv=arr=>B.map((_,k)=>arr.reduce((s,i)=>s+val(i,k),0));
+ const rows=[];const tot=rowv(list);rows.push({k:'TOT',lv:'tot',name:tx('All platforms'),v:tot,its:list});
+ for(const p of PL){const pl=list.filter(i=>i.plat===p);if(!pl.length)continue;rows.push({k:p,lv:'l0',name:p,c:color('plat',p),v:rowv(pl),its:pl});
+  if(ui.hmCol[p])continue;
+  for(const d of DISCS){const dl=pl.filter(i=>i.disc===d);if(dl.length)rows.push({k:p+'|'+d,lv:'l1',name:dL(d),c:color('disc',d),v:rowv(dl),its:dl})}}
+ // colour scale per level
+ const mx={};rows.forEach(r=>{mx[r.lv]=Math.max(mx[r.lv]||0,...r.v)});
+ const lvl=(v,m)=>v<=0?'z':'h'+Math.min(5,Math.max(1,Math.ceil(v/m*5)));
+ const fmtv=v=>M==='mp'?(v>=10?Math.round(v):v<0.05?'<'+f1(0.1):f1(v)):Math.round(v);
+ const now=SD();
+ // header
+ let h1='',h2='';
+ if(per==='w'){let k=0;while(k<B.length){const m=new Date(B[k].s).getUTCMonth(),y=new Date(B[k].s).getUTCFullYear();let n=0;while(k+n<B.length&&new Date(B[k+n].s).getUTCMonth()===m)n++;h1+=`<th colspan="${n}">${ui.lang==='vi'?'T'+(m+1)+'/'+String(y).slice(2):MON[m]+'-'+String(y).slice(2)}</th>`;k+=n}
+  h2=B.map(bk=>`<th class="${now>=bk.s&&now<=bk.e?'cur':''}" title="${fmt(bk.s)} – ${fmt(bk.e)}">${new Date(bk.s).getUTCDate()}</th>`).join('')}
+ else{let k=0;while(k<B.length){const y=new Date(B[k].s).getUTCFullYear();let n=0;while(k+n<B.length&&new Date(B[k+n].s).getUTCFullYear()===y)n++;h1+=`<th colspan="${n}">${y}</th>`;k+=n}
+  h2=B.map(bk=>{const m=new Date(bk.s).getUTCMonth();return `<th class="${now>=bk.s&&now<=bk.e?'cur':''}">${ui.lang==='vi'?'T'+(m+1):MON[m]}</th>`}).join('')}
+ const body=rows.map((r,ri)=>`<tr class="${r.lv}" data-r="${ri}"><th class="rh" ${r.lv==='l0'?`data-tog="${r.k}" title="${tx('Click to expand / collapse')}"`:''} style="--c:${r.c||'transparent'}">${r.lv==='l0'?(ui.hmCol[r.k]?'▸ ':'▾ '):''}${r.c?'<span class="sw"></span>':''}${esc(r.name)}</th>${r.v.map((v,k)=>{const c=lvl(v,mx[r.lv]),isNow=now>=B[k].s&&now<=B[k].e,isSel=hmSel&&hmSel.r===r.k&&hmSel.k===k;return `<td class="${c}${isSel?' sel':''}" data-k="${k}" title="${esc(r.name)} · ${fmt(B[k].s)} – ${fmt(B[k].e)}: ${fmtv(v)}">${v>0?fmtv(v):''}</td>`}).join('')}<td class="sum">${M==='mp'?f1(Math.max(...r.v)):r.v.reduce((s,x)=>s+(M==='act'?0:x),0)||r.its.length}</td></tr>`).join('');
+ const mLab={act:L2('Items active','Hạng mục đang thực hiện'),fin:L2('Items finishing','Hạng mục kết thúc'),mp:L2('People/day (average)','Người/ngày (trung bình)')}[M];
+ const sumLab=M==='mp'?L2('Peak','Đỉnh'):L2('Items','Số HM');
+ const seg=(id,cur,opts)=>`<div class="seg" id="${id}">${opts.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${v===cur}">${l}</button>`).join('')}</div>`;
+ const ramp=[1,2,3,4,5].map(n=>`<i class="h${n}" style="background:var(--h${n});color:${n>3?'var(--hi-ink)':'var(--ink)'}">${n===1?'≤20%':n===5?'>80%':''}</i>`).join('');
+ $('hm').innerHTML=`<div class="hmCtl">
+  <span class="lbl">${tx('Show')} ${seg('hmM',M,[['act',L2('Items active','HM đang làm')],['fin',L2('Items finishing','HM kết thúc')],['mp',L2('People/day','Người/ngày')]])}</span>
+  <span class="lbl">${tx('Period')} ${seg('hmP',per,[['w',L2('Week','Tuần')],['m',L2('Month','Tháng')]])}</span>
+  <span class="lbl">${tx('Type')} ${seg('hmTy',ui.hmTy,[['',tx('All')],['COW','COW'],['PL',tx('Punchlist')],['PD','Post-Drilling']])}</span>
+  <span class="lbl">${tx('Scope')} ${seg('hmSc',ui.hmSc,[['',tx('All')],['POS','POS'],['PMC','PMC']])}</span>
+  <span class="lbl">${seg('hmO',String(ui.hmOpen),[['true',L2('Open items only','Chỉ hạng mục còn mở')],['false',L2('Include done','Gồm cả đã đóng')]])}</span>
+  <div class="hmLeg"><b>${mLab}</b><span class="ramp">${ramp}</span><span>${L2('of the row level maximum · red column = status date','so với giá trị lớn nhất cùng cấp · cột đỏ = ngày báo cáo')}</span></div></div>
+ <div class="hmScroll"><table class="hm"><thead><tr><th class="rh" rowspan="2">${L2('Platform / discipline','Giàn / bộ môn')}</th>${h1}<th rowspan="2" class="sum" style="background:var(--cy);color:var(--cy-ink)">${sumLab}</th></tr><tr>${h2}</tr></thead><tbody>${body}</tbody></table></div>
+ <div class="hmDet" id="hmDet"></div>`;
+ const bind=(id,k,conv)=>$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{ui[k]=conv?conv(b.dataset.v):b.dataset.v;hmSel=null;render()});
+ bind('hmM','hmM');bind('hmP','hmP');bind('hmTy','hmTy');bind('hmSc','hmSc');bind('hmO','hmOpen',v=>v==='true');
+ $('hm').querySelectorAll('th[data-tog]').forEach(th=>th.onclick=()=>{const k=th.dataset.tog;ui.hmCol[k]=!ui.hmCol[k];render()});
+ $('hm').querySelectorAll('td[data-k]').forEach(td=>td.onclick=()=>{const r=rows[+td.parentElement.dataset.r],k=+td.dataset.k;if(!r.v[k])return;hmSel={r:r.k,k};$('hm').querySelectorAll('td.sel').forEach(x=>x.classList.remove('sel'));td.classList.add('sel');hmDetail(r,B[k],k,val)});
+ if(hmSel){const ri=rows.findIndex(r=>r.k===hmSel.r);if(ri>=0&&rows[ri].v[hmSel.k])hmDetail(rows[ri],B[hmSel.k],hmSel.k,val);else hmSel=null}
+ if(!hmSel)$('hmDet').innerHTML=`<span style="color:var(--mute)">${L2('Click a cell to list its items.','Bấm vào một ô để xem danh sách hạng mục.')}</span>`;
+}
+function hmDetail(r,bk,k,val){const its=r.its.filter(i=>val(i,k)>0).sort((a,b)=>cur(a).s-cur(b).s);
+ $('hmDet').innerHTML=`<h3>${esc(r.name)}<span>${fmt(bk.s)} – ${fmt(bk.e)} · ${its.length} ${tx('items')}</span></h3><div class="ovw"><table class="kt ol"><thead><tr>${['ID','Item','Scope','Description','Start','Finish','Status',''].map(h=>`<th>${tx(h)}</th>`).join('')}</tr></thead><tbody>${its.map(i=>{const c=cur(i);return `<tr data-id="${i.id}"><td>${esc(i.id)}</td><td>${esc(i.item)}</td><td><span class="sc sc-${esc(i.scope)}">${esc(i.scope)}</span></td><td style="white-space:normal;text-align:left;max-width:420px">${esc(i.desc)}</td><td>${fmt(c.s)}</td><td class="${overdue(i)?'od':''}">${fmt(c.f)}</td><td>${tx(stat(i))}</td><td>${cbtn(i)}</td></tr>`}).join('')}</tbody></table></div>`;
+ $('hmDet').querySelectorAll('tr[data-id] td').forEach(td=>td.onclick=e=>{if(e.target.closest('[data-close]'))return;openDrawer(td.parentElement.dataset.id)})}
+
 // ---------- 1-month look-ahead ----------
 function renderLA(){
  const from=ui.laFrom?P(ui.laFrom):TODAY,N=ui.laN||30,to=from+(N-1)*DAY,days=Array.from({length:N},(_,k)=>from+k*DAY);
@@ -466,7 +625,7 @@ function renderLA(){
 }
 
 // ---------- display settings ----------
-const VIS=[['Roadmap',[['sub','Description under the title'],['facts','Summary cards'],['chart','Daily manloading chart'],['weeks','Week row'],['labels','Bar labels'],['today','Status-date line'],['ghost','Original dates of edited bars'],['notes','Notes at the bottom']]],
+const VIS=[['Roadmap',[['sub','Description under the title'],['facts','Summary cards'],['chart','Daily manloading chart'],['weeks','Week row'],['labels','Bar labels'],['today','Status-date line'],['ghost','Original dates of edited bars']]],
  ['Columns',[['col_id','ID'],['col_it','Item'],['col_de','Description'],['col_sc','Scope'],['col_mt','Material'],['col_st','Status'],['col_ac','Close button'],['col_s','Start'],['col_f','Finish'],['col_du','Days']]],
  ['Toolbar',[['t_colour','Colour'],['t_chartby','Chart by'],['t_plats','Platform buttons'],['t_disc','Discipline filter'],['t_mat','Material filter'],['t_scope','Scope filter'],['t_type','Type filter'],['t_status','Status filter'],['t_search','Search box'],['t_zoom','Zoom + Fit'],['t_undo','Undo'],['t_expand','Expand / Collapse'],['t_csv','Export / Import CSV'],['t_reset','Reset edits']]],
  ['1-Month Look-ahead',[['la_cards','Summary cards']]],
